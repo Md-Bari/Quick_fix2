@@ -14,7 +14,7 @@ final List<ShoeModel> availableShoes = [
     name: "NIKE",
     model: "AIR-JORDAN MID",
     price: 190.00,
-    imgAddress: "assets/images/nike8.png",
+    imgAddress: "assets/images/plumber.png",
     modelColor: const Color(0xff3F7943),
   ),
   ShoeModel(
