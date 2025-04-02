@@ -358,10 +358,8 @@ class _BodyState extends State<Body> {
                           width: width / 4,
                           height: height / 42,
                           child: FittedBox(
-                            child: Text(
-                              "\$${model.price.toStringAsFixed(2)}",
-                              style: AppThemes.homeGridPrice
-                            ),
+                            child: Text("\$${model.price.toStringAsFixed(2)}",
+                                style: AppThemes.homeGridPrice),
                           ),
                         ),
                       ),

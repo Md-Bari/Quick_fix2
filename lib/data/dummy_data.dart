@@ -4,16 +4,16 @@ import '../models/models.dart';
 
 final List<ShoeModel> availableShoes = [
   ShoeModel(
-    name: "NIKE",
-    model: "AIR-MAX",
+    name: "Maid",
+    model: "Mr cleaner",
     price: 130.00,
-    imgAddress: "assets/images/nike1.png",
+    imgAddress: "assets/images/maid.png",
     modelColor: const Color(0xffDE0106),
   ),
   ShoeModel(
-    name: "NIKE",
-    model: "AIR-JORDAN MID",
-    price: 190.00,
+    name: "Plumber",
+    model: "Mr Plumber Organization",
+    price: 500.00,
     imgAddress: "assets/images/plumber.png",
     modelColor: const Color(0xff3F7943),
   ),
