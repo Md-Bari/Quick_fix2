@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Quicksand',
       ),
-      title: 'Sneakers Shop App',
+      title: 'Quick Fix ',
       home: MainNavigator(),
     );
   }
