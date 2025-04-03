@@ -152,7 +152,7 @@ class _BodyBagViewState extends State<BodyBagView>
                           SizedBox(
                             height: 4,
                           ),
-                          Text("\$${currentBagItem.price}",
+                          Text("\৳${currentBagItem.price}",
                               style: AppThemes.bagProductPrice),
                           SizedBox(
                             height: 10,
