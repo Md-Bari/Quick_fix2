@@ -125,20 +125,18 @@ class _BodyBagViewState extends State<BodyBagView>
                           ),
                         ),
                         Positioned(
-                            right: 2,
-                            bottom: 15,
-                            child: RotationTransition(
-                              turns: AlwaysStoppedAnimation(-40 / 360),
-                              child: Container(
-                                width: 140,
-                                height: 140,
-                                child: Image(
-                                  image: AssetImage(
-                                    currentBagItem.imgAddress,
-                                  ),
-                                ),
+                          right: 2,
+                          bottom: 15,
+                          child: Container(
+                            width: 140,
+                            height: 140,
+                            child: Image(
+                              image: AssetImage(
+                                currentBagItem.imgAddress,
                               ),
-                            ))
+                            ),
+                          ),
+                        )
                       ]),
                     ),
                     Padding(
