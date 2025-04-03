@@ -13,7 +13,7 @@ import '../../../models/models.dart';
 import '../../../theme/custom_app_theme.dart';
 
 class DetailsBody extends StatefulWidget {
-  ShoeModel model;
+  Category model;
   bool isComeFromMoreSection;
   DetailsBody({required this.model, required this.isComeFromMoreSection});
 

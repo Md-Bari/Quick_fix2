@@ -125,7 +125,7 @@ class _BodyState extends State<Body> {
             scrollDirection: Axis.horizontal,
             itemCount: availableShoes.length,
             itemBuilder: (ctx, index) {
-              ShoeModel model = availableShoes[index];
+              Category model = availableShoes[index];
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -259,7 +259,7 @@ class _BodyState extends State<Body> {
           itemCount: availableShoes.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (ctx, index) {
-            ShoeModel model = availableShoes[index];
+            Category model = availableShoes[index];
             return GestureDetector(
               onTap: () {
                 Navigator.push(

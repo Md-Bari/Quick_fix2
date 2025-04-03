@@ -1,14 +1,14 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
-class ShoeModel {
+class Category {
   String name;
   String model;
   double price;
   String imgAddress;
   Color modelColor;
-  ShoeModel({
+
+  // Correct constructor
+  Category({
     required this.name,
     required this.model,
     required this.price,
@@ -16,7 +16,3 @@ class ShoeModel {
     required this.modelColor,
   });
 }
-
-
-
- 

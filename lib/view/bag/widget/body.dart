@@ -98,7 +98,7 @@ class _BodyBagViewState extends State<BodyBagView>
           scrollDirection: Axis.vertical,
           itemCount: itemsOnBag.length,
           itemBuilder: (ctx, index) {
-            ShoeModel currentBagItem = itemsOnBag[index];
+            Category currentBagItem = itemsOnBag[index];
 
             return FadeAnimation(
               delay: 1.5 * index / 4,

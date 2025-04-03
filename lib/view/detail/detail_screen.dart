@@ -7,9 +7,9 @@ import 'package:sneakers_app/view/detail/components/body.dart';
 import '../../utils/constants.dart';
 
 class DetailScreen extends StatelessWidget {
-  ShoeModel model;
+  Category model;
   bool isComeFromMoreSection;
-  DetailScreen({required this.model,required this.isComeFromMoreSection});
+  DetailScreen({required this.model, required this.isComeFromMoreSection});
 
   @override
   Widget build(BuildContext context) {
