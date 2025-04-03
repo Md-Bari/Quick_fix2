@@ -197,14 +197,11 @@ class _BodyState extends State<Body> {
                           delay: 2,
                           child: Hero(
                             tag: model.imgAddress,
-                            child: RotationTransition(
-                              turns: AlwaysStoppedAnimation(-30 / 360),
-                              child: Container(
-                                width: 250,
-                                height: 230,
-                                child: Image(
-                                  image: AssetImage(model.imgAddress),
-                                ),
+                            child: Container(
+                              width: 250,
+                              height: 230,
+                              child: Image(
+                                image: AssetImage(model.imgAddress),
                               ),
                             ),
                           ),
@@ -319,16 +316,13 @@ class _BodyState extends State<Body> {
                       left: 25,
                       child: FadeAnimation(
                         delay: 1.5,
-                        child: RotationTransition(
-                          turns: AlwaysStoppedAnimation(-15 / 360),
-                          child: Container(
-                            width: width / 3,
-                            height: height / 9,
-                            child: Hero(
-                              tag: model.model,
-                              child: Image(
-                                image: AssetImage(model.imgAddress),
-                              ),
+                        child: Container(
+                          width: width / 3,
+                          height: height / 9,
+                          child: Hero(
+                            tag: model.model,
+                            child: Image(
+                              image: AssetImage(model.imgAddress),
                             ),
                           ),
                         ),
