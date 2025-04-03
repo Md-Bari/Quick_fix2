@@ -192,7 +192,7 @@ class _BodyState extends State<Body> {
                       ),
                       Positioned(
                         left: 20,
-                        top: 60,
+                        top: 80,
                         child: FadeAnimation(
                           delay: 2,
                           child: Hero(
