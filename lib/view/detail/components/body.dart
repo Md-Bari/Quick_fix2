@@ -396,7 +396,7 @@ class details extends State<DetailsBody> {
             ),
           ),
           Expanded(child: Container()),
-          Text('\$${widget.model.price.toStringAsFixed(2)}',
+          Text('{widget.model.price.toStringAsFixed(2)}',
               style: AppThemes.detailsProductPrice),
         ],
       ),
