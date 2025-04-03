@@ -20,7 +20,7 @@ final List<Category> availableShoes = [
   Category(
     name: "Electrician",
     model: "JK Electronics",
-    price: 250,
+    price: 300,
     imgAddress: "assets/images/electrician.png",
     modelColor: const Color(0xffE66863),
   ),
@@ -34,7 +34,7 @@ final List<Category> availableShoes = [
   Category(
     name: "Security Service",
     model: "DIU security Company",
-    price: 150.00,
+    price: 800,
     imgAddress: "assets/images/security_service.png",
     modelColor: const Color(0xff37376B),
   ),
@@ -94,4 +94,4 @@ final List featured = [
   'Upcoming',
 ];
 
-final List<String> sizes = ['Monthly', 'weekly', 'Daily', 'Hourly'];
+final List<String> sizes = ['Monthly/', 'weekly', 'Daily', 'Hourly'];
