@@ -18,7 +18,7 @@ final List<ShoeModel> availableShoes = [
     modelColor: const Color(0xff3F7943),
   ),
   ShoeModel(
-    name: "NIKE",
+    name: "Electrician",
     model: "ZOOM",
     price: 160.00,
     imgAddress: "assets/images/nike2.png",
