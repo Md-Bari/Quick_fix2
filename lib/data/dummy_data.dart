@@ -84,13 +84,9 @@ final List<UserStatus> userStatus = [
 ];
 
 final List categories = [
-  'Nike',
-  'Adidas',
-  'Jordan',
-  'Puma',
-  'Gucci',
-  'Tom Ford',
-  'Koio',
+  'Premium',
+  'Medium',
+  'Regular',
 ];
 final List featured = [
   'New',
@@ -98,4 +94,4 @@ final List featured = [
   'Upcoming',
 ];
 
-final List<double> sizes = [6, 7.5, 8, 9.5];
+final List<String> sizes = ['Monthly', 'weekly', 'Daily', 'Hourly'];
