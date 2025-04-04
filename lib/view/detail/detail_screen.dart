@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import '../../models/shoe_model.dart';
+import '../../models/category_model.dart';
 import 'components/app_bar.dart';
 import 'components/body.dart';
 import '../../utils/constants.dart';

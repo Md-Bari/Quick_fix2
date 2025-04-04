@@ -7,7 +7,7 @@ import 'package:sneakers_app/theme/custom_app_theme.dart';
 
 import '../../../../animation/fadeanimation.dart';
 import '../../../../utils/constants.dart';
-import '../../../../models/shoe_model.dart';
+import '../../../models/category_model.dart';
 import '../../../../view/detail/detail_screen.dart';
 import '../../../data/dummy_data.dart';
 

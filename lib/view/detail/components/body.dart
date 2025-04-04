@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../animation/fadeanimation.dart';
 import '../../../../../utils/app_methods.dart';
 import '../../../../../utils/constants.dart';
-import '../../../../../models/shoe_model.dart';
+import '../../../models/category_model.dart';
 import '../../../data/dummy_data.dart';
 import '../../../models/models.dart';
 import '../../../theme/custom_app_theme.dart';
