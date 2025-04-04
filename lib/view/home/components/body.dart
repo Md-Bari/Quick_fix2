@@ -89,7 +89,6 @@ class _BodyState extends State<Body> {
             quarterTurns: -1,
             child: ListView.builder(
                 physics: BouncingScrollPhysics(),
-                itemCount: featured.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -100,18 +99,6 @@ class _BodyState extends State<Body> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        featured[index],
-                        style: TextStyle(
-                            fontSize:
-                                selectedIndexOfFeatured == index ? 19 : 17,
-                            color: selectedIndexOfFeatured == index
-                                ? AppConstantsColor.darkTextColor
-                                : AppConstantsColor.unSelectedTextColor,
-                            fontWeight: selectedIndexOfFeatured == index
-                                ? FontWeight.bold
-                                : FontWeight.w400),
-                      ),
                     ),
                   );
                 }),

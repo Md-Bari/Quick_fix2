@@ -61,9 +61,9 @@ class _BodyProfileState extends State<BodyProfile> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Amir.H Bayat", style: AppThemes.profileDevName),
+              Text("SD Limited", style: AppThemes.profileDevName),
               Text(
-                "Flutter Developer",
+                "DIUUUUUU",
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
@@ -111,7 +111,7 @@ class _BodyProfileState extends State<BodyProfile> {
             Center(
               child: Container(
                 width: width / 1.12,
-                height: height / 13,
+                height: height / 16,
                 child: ListView.builder(
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
@@ -287,7 +287,7 @@ class _BodyProfileState extends State<BodyProfile> {
       delay: 2.5,
       child: Container(
         width: width,
-        height: height / 6.5,
+        height: height / 7.5,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -299,17 +299,10 @@ class _BodyProfileState extends State<BodyProfile> {
                   fontSize: 15),
             ),
             SizedBox(
-              height: 15,
-            ),
-            Text(
-              "    Switch to Other Account",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue[600],
-                  fontSize: 17),
+              height: 12,
             ),
             SizedBox(
-              height: 40,
+              height: 25,
             ),
             Text(
               "    Log Out",

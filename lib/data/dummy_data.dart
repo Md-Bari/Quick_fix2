@@ -88,10 +88,5 @@ final List categories = [
   'Medium',
   'Regular',
 ];
-final List featured = [
-  'New',
-  'Featured',
-  'Upcoming',
-];
 
 final List<String> sizes = ['Monthly/', 'weekly', 'Daily', 'Hourly'];

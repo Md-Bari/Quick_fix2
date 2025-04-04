@@ -12,10 +12,10 @@ PreferredSize? customAppBar() {
     preferredSize: Size.fromHeight(70),
     child: AppBar(
       elevation: 0,
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color.fromARGB(0, 226, 93, 93),
       title: Padding(
         padding: EdgeInsets.only(top: 8.0),
-        child: Text("Discover", style: AppThemes.homeAppBar),
+        child: Text("QUICK FIX", style: AppThemes.homeAppBar),
       ),
       actions: [
         Padding(
@@ -23,7 +23,7 @@ PreferredSize? customAppBar() {
           child: IconButton(
             icon: FaIcon(
               CupertinoIcons.search,
-              color: AppConstantsColor.darkTextColor,
+              color: const Color.fromARGB(255, 0, 0, 0),
               size: 25,
             ),
             onPressed: () {},
