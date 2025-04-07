@@ -3,10 +3,10 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sneakers_app/utils/constants.dart';
-import 'package:sneakers_app/view/bag/bag_screen.dart';
-import 'package:sneakers_app/view/home/home_screen.dart';
-import 'package:sneakers_app/view/profile/profile_screen.dart';
+import 'package:quick_fix/utils/constants.dart';
+import 'package:quick_fix/view/bag/bag_screen.dart';
+import 'package:quick_fix/view/home/home_screen.dart';
+import 'package:quick_fix/view/profile/profile_screen.dart';
 
 class MainNavigator extends StatefulWidget {
   @override
