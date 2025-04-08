@@ -20,7 +20,7 @@ class EmptyList extends StatelessWidget {
             FadeAnimation(
               delay: 0.5,
               child:
-                  Text("No shoes added!", style: AppThemes.bagEmptyListTitle),
+                  Text("No Service added!", style: AppThemes.bagEmptyListTitle),
             ),
             FadeAnimation(
               delay: 0.5,
