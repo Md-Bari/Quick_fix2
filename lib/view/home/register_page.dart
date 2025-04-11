@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:quick_fix/view/navigator.dart';
-import 'register_page.dart'; // create this
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void _login(BuildContext context) async {
+  void _register(BuildContext context) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MainNavigator()),
-      );
+      Navigator.pop(context); // Go back to LoginPage
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Login failed: $e'),
+        content: Text('Registration failed: $e'),
       ));
     }
   }
@@ -27,7 +22,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Register')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -45,17 +40,8 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => _login(context),
-              child: const Text('Login'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
-              },
-              child: const Text("Don't have an account? Register"),
+              onPressed: () => _register(context),
+              child: const Text('Register'),
             ),
           ],
         ),
