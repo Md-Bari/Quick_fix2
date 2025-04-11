@@ -1,13 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import '../../../theme/custom_app_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../theme/custom_app_theme.dart';
 import '../../../../animation/fadeanimation.dart';
 import '../../../../models/models.dart';
 import '../../../../utils/constants.dart';
 import '../../../../view/profile/widget/repeated_list.dart';
 import '../../../data/dummy_data.dart';
+import '../../../view/home/login_page.dart'; // Make sure the import path is correct
 
 class BodyProfile extends StatefulWidget {
   const BodyProfile({Key? key}) : super(key: key);
@@ -18,6 +20,17 @@ class BodyProfile extends StatefulWidget {
 
 class _BodyProfileState extends State<BodyProfile> {
   int statusCurrentIndex = 0;
+  String? userEmail;
+
+  @override
+  void initState() {
+    super.initState();
+    final user = FirebaseAuth.instance.currentUser;
+    setState(() {
+      userEmail = user?.email ?? "Guest";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -29,13 +42,9 @@ class _BodyProfileState extends State<BodyProfile> {
       child: Column(
         children: [
           topProfilePicAndName(width, height),
-          SizedBox(
-            height: 40,
-          ),
+          SizedBox(height: 40),
           middleStatusListView(width, height),
-          SizedBox(
-            height: 30,
-          ),
+          SizedBox(height: 30),
           middleDashboard(width, height),
           bottomSection(width, height),
         ],
@@ -53,39 +62,38 @@ class _BodyProfileState extends State<BodyProfile> {
           CircleAvatar(
             radius: 50,
             backgroundImage: NetworkImage(
-                "https://avatars.githubusercontent.com/u/91388754?v=4"),
+              "https://avatars.githubusercontent.com/u/91388754?v=4",
+            ),
           ),
-          SizedBox(
-            width: 20,
-          ),
+          SizedBox(width: 20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("SD Limited", style: AppThemes.profileDevName),
+              Text(
+                userEmail ?? "No Name",
+                style: AppThemes.profileDevName,
+              ),
               Text(
                 "DIUUUUUU",
                 style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey),
+                  fontSize: 17,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                ),
               ),
             ],
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.edit_outlined,
-                color: Colors.grey,
-              ))
+            onPressed: () {},
+            icon: Icon(Icons.edit_outlined, color: Colors.grey),
+          )
         ],
       ),
     );
   }
 
-  // Middle Status List View Components
+  // Middle Status List View
   middleStatusListView(width, height) {
     return FadeAnimation(
       delay: 1.5,
@@ -100,64 +108,61 @@ class _BodyProfileState extends State<BodyProfile> {
               child: Text(
                 "My Status",
                 style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey,
-                    fontSize: 15),
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                  fontSize: 15,
+                ),
               ),
             ),
-            SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5),
             Center(
               child: Container(
                 width: width / 1.12,
                 height: height / 16,
                 child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: userStatus.length,
-                    itemBuilder: (ctx, index) {
-                      UserStatus status = userStatus[index];
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            statusCurrentIndex = index;
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Container(
-                            margin: EdgeInsets.all(5),
-                            width: 120,
-                            decoration: BoxDecoration(
-                              color: statusCurrentIndex == index
-                                  ? status.selectColor
-                                  : status.unSelectColor,
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  status.emoji,
-                                  style: TextStyle(fontSize: 16),
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: userStatus.length,
+                  itemBuilder: (ctx, index) {
+                    UserStatus status = userStatus[index];
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          statusCurrentIndex = index;
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        child: Container(
+                          margin: EdgeInsets.all(5),
+                          width: 120,
+                          decoration: BoxDecoration(
+                            color: statusCurrentIndex == index
+                                ? status.selectColor
+                                : status.unSelectColor,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(status.emoji,
+                                  style: TextStyle(fontSize: 16)),
+                              SizedBox(width: 4),
+                              Text(
+                                status.txt,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: AppConstantsColor.lightTextColor,
+                                  fontSize: 16,
                                 ),
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  status.txt,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: AppConstantsColor.lightTextColor,
-                                      fontSize: 16),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    }),
+                      ),
+                    );
+                  },
+                ),
               ),
             )
           ],
@@ -166,7 +171,7 @@ class _BodyProfileState extends State<BodyProfile> {
     );
   }
 
-  // Middle Dashboard ListTile Components
+  // Middle Dashboard ListTile
   middleDashboard(width, height) {
     return FadeAnimation(
       delay: 2,
@@ -176,16 +181,12 @@ class _BodyProfileState extends State<BodyProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "    Dashboard",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                  fontSize: 15),
-            ),
-            SizedBox(
-              height: 10,
-            ),
+            Text("    Dashboard",
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey,
+                    fontSize: 15)),
+            SizedBox(height: 10),
             RoundedLisTile(
               width: width,
               height: height,
@@ -201,19 +202,16 @@ class _BodyProfileState extends State<BodyProfile> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "2 New",
                       style: TextStyle(
-                          color: AppConstantsColor.lightTextColor,
-                          fontWeight: FontWeight.w500),
+                        color: AppConstantsColor.lightTextColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppConstantsColor.lightTextColor,
-                      size: 15,
-                    )
+                    Icon(Icons.arrow_forward_ios,
+                        color: AppConstantsColor.lightTextColor, size: 15),
                   ],
                 ),
               ),
@@ -223,25 +221,9 @@ class _BodyProfileState extends State<BodyProfile> {
               height: height,
               leadingBackColor: Colors.yellow[600],
               icon: Icons.archive,
-              title: "Achievement's",
-              trailing: Container(
-                width: 30,
-                height: 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppConstantsColor.darkTextColor,
-                      size: 15,
-                    )
-                  ],
-                ),
-              ),
+              title: "Achievements",
+              trailing: Icon(Icons.arrow_forward_ios,
+                  color: AppConstantsColor.darkTextColor, size: 15),
             ),
             RoundedLisTile(
               width: width,
@@ -258,19 +240,16 @@ class _BodyProfileState extends State<BodyProfile> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "Action Needed  ",
                       style: TextStyle(
-                          color: AppConstantsColor.lightTextColor,
-                          fontWeight: FontWeight.w500),
+                        color: AppConstantsColor.lightTextColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppConstantsColor.lightTextColor,
-                      size: 15,
-                    )
+                    Icon(Icons.arrow_forward_ios,
+                        color: AppConstantsColor.lightTextColor, size: 15),
                   ],
                 ),
               ),
@@ -281,7 +260,7 @@ class _BodyProfileState extends State<BodyProfile> {
     );
   }
 
-  // My Account Section Components
+  // My Account Section With Logout
   bottomSection(width, height) {
     return FadeAnimation(
       delay: 2.5,
@@ -291,25 +270,29 @@ class _BodyProfileState extends State<BodyProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "    My Account",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                  fontSize: 15),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Text(
-              "    Log Out",
-              style: TextStyle(
+            Text("    My Account",
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey,
+                    fontSize: 15)),
+            SizedBox(height: 12),
+            InkWell(
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (route) => false,
+                );
+              },
+              child: Text(
+                "    Log Out",
+                style: TextStyle(
                   fontWeight: FontWeight.w600,
                   color: Colors.red[500],
-                  fontSize: 18),
+                  fontSize: 18,
+                ),
+              ),
             ),
           ],
         ),

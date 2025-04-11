@@ -169,7 +169,9 @@ class details extends State<DetailsBody> {
                   image: AssetImage(widget.model.imgAddress),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Colors.grey.withOpacity(1), BlendMode.darken),
+                      // ignore: deprecated_member_use
+                      Colors.grey.withOpacity(1),
+                      BlendMode.darken),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
