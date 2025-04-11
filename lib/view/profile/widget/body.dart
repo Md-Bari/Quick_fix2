@@ -9,7 +9,7 @@ import '../../../../models/models.dart';
 import '../../../../utils/constants.dart';
 import '../../../../view/profile/widget/repeated_list.dart';
 import '../../../data/dummy_data.dart';
-import '../../../view/home/login_page.dart'; // Make sure the import path is correct
+import '../../../view/home/login_page.dart';
 
 class BodyProfile extends StatefulWidget {
   const BodyProfile({Key? key}) : super(key: key);
