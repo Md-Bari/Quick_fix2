@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, must_be_immutable, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../animation/fadeanimation.dart';
@@ -25,6 +24,7 @@ class DetailsBody extends StatefulWidget {
 class details extends State<DetailsBody> {
   bool _isSelectedCountry = false;
   int? _isSelectedSize;
+  String _selectedPlan = "Weekly"; // 👈 Add state variable for plan
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +47,7 @@ class details extends State<DetailsBody> {
                 color: Colors.grey,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Column(
@@ -57,22 +55,56 @@ class details extends State<DetailsBody> {
                   nameAndPrice(),
                   SizedBox(height: 10),
                   shoeInfo(width, height),
-                  SizedBox(
-                    height: 5,
+                  SizedBox(height: 10),
+
+                  // 👇 Plan selection buttons
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: ["Weekly", "Monthly", "Yearly"].map((plan) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: _selectedPlan == plan
+                                ? Colors.black
+                                : Colors.grey,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectedPlan = plan;
+                            });
+                          },
+                          child: Text(
+                            plan,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
                   ),
+
+                  SizedBox(height: 10),
+
+                  // 👇 Plan detail content
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    child: Text(
+                      _getPlanDetails(),
+                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                    ),
+                  ),
+
+                  SizedBox(height: 10),
                   moreDetailsText(width, height),
                   sizeTextAndCountry(width, height),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 10),
                   endSizesAndButton(width, height),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                   materialButton(width, height),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                 ],
               ),
             )
@@ -82,7 +114,20 @@ class details extends State<DetailsBody> {
     );
   }
 
-  // Top information Widget Components
+  // 👇 Plan Details Helper
+  String _getPlanDetails() {
+    switch (_selectedPlan) {
+      case "Weekly":
+        return "Weekly Plan: Includes 2 service sessions and priority support.";
+      case "Monthly":
+        return "Monthly Plan: 8 sessions, 10% off, priority booking.";
+      case "Yearly":
+        return "Yearly Plan: 100 sessions, 25% discount, free emergency support, dedicated manager.";
+      default:
+        return "";
+    }
+  }
+
   topInformationWidget(width, height) {
     return Container(
       width: width,
@@ -129,7 +174,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  // Rounded Image Widget About Below method Components
   roundedImage(width, height) {
     return Container(
       padding: EdgeInsets.all(2),
@@ -145,7 +189,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  // Middle Image List Widget Components
   middleImgListWidget(width, height) {
     return FadeAnimation(
       delay: 0.5,
@@ -187,7 +230,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  //MaterialButton Components
   materialButton(width, height) {
     return FadeAnimation(
       delay: 3.5,
@@ -207,7 +249,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  //end section Sizes And Button Components
   endSizesAndButton(width, height) {
     return Container(
       width: width,
@@ -229,9 +270,7 @@ class details extends State<DetailsBody> {
                       "Try it",
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
-                    SizedBox(
-                      width: 8,
-                    ),
+                    SizedBox(width: 8),
                     RotatedBox(
                         quarterTurns: -1,
                         child: FaIcon(FontAwesomeIcons.shoePrints))
@@ -239,9 +278,7 @@ class details extends State<DetailsBody> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 15,
-            ),
+            SizedBox(width: 15),
             Container(
               width: width / 1.5,
               child: ListView.builder(
@@ -291,7 +328,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  //Size Text And Country Button Components
   sizeTextAndCountry(width, height) {
     return FadeAnimation(
       delay: 2.5,
@@ -305,9 +341,7 @@ class details extends State<DetailsBody> {
               fontSize: 22,
             ),
           ),
-          Expanded(
-            child: Container(),
-          ),
+          Expanded(child: Container()),
           Container(
             width: width / 9,
             child: TextButton(
@@ -355,7 +389,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  //more details Text Components
   moreDetailsText(width, height) {
     return FadeAnimation(
       delay: 2,
@@ -368,7 +401,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  //About service Text Components
   shoeInfo(width, height) {
     return FadeAnimation(
       delay: 1.5,
@@ -382,7 +414,6 @@ class details extends State<DetailsBody> {
     );
   }
 
-  //Name And Price Text Components
   nameAndPrice() {
     return FadeAnimation(
       delay: 1,
@@ -397,7 +428,7 @@ class details extends State<DetailsBody> {
             ),
           ),
           Expanded(child: Container()),
-          Text('{widget.model.price.toStringAsFixed(2)}',
+          Text('₹${widget.model.price.toStringAsFixed(2)}',
               style: AppThemes.detailsProductPrice),
         ],
       ),

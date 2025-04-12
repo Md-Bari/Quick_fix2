@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../theme/custom_app_theme.dart';
 import '../../../utils/constants.dart';
-import 'package:quick_fix/view/home/login_page.dart'; // Make sure this path is correct
+import 'package:quick_fix/view/home/login_page.dart';
 
 PreferredSize? customAppBar(BuildContext context) {
   return PreferredSize(
@@ -28,9 +28,7 @@ PreferredSize? customAppBar(BuildContext context) {
               color: const Color.fromARGB(255, 0, 0, 0),
               size: 25,
             ),
-            onPressed: () {
-              // TODO: Implement search functionality
-            },
+            onPressed: () {},
           ),
         ),
         Padding(
@@ -41,16 +39,14 @@ PreferredSize? customAppBar(BuildContext context) {
               color: AppConstantsColor.darkTextColor,
               size: 25,
             ),
-            onPressed: () {
-              // TODO: Implement notification functionality
-            },
+            onPressed: () {},
           ),
         ),
         Padding(
           padding: EdgeInsets.only(top: 8.0, right: 4),
           child: Tooltip(
             message: 'Logout',
-            waitDuration: Duration(milliseconds: 0), // Instant display
+            waitDuration: Duration(milliseconds: 0),
             child: IconButton(
               icon: Icon(
                 Icons.logout,
